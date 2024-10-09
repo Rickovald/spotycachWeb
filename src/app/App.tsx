@@ -3,11 +3,11 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // COMPONENT IMPORTS
 import { Footer } from 'widgets/Footer';
-import { Navigation } from 'widgets/Navigation';
 import { Main } from 'pages/Main';
 import { Error404 } from 'pages/Error404/Error404';
 import { About } from 'pages/About/';
 import { Contacts } from 'pages/Contacts';
+import { Header } from 'widgets/Header';
 
 const App = () => {
     return (
@@ -19,7 +19,7 @@ const App = () => {
                     <link rel="canonical" href="http://mysite.com/example" />
                 </Helmet>
                 <Router>
-                    <Navigation />
+                    <Header />
                     <Routes>
                         <Route
                             path='/'

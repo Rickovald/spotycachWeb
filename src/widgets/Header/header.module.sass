@@ -1,0 +1,23 @@
+@use "app/mixins" as *
+@use "app/functions" as *
+
+.head
+    display: block
+.upper
+    position: relative
+    &__logo
+        width: 100%
+        height: toRem(300)
+        display: block
+        filter: brightness(70%)
+    &__feats
+        display: flex
+        align-items: center
+        justify-content: center
+        gap: toRem(20)
+        position: absolute
+        width: 100%
+        bottom: toRem(20)
+    &__feat
+        color: $LightTextColor
+        @include H4Bold
