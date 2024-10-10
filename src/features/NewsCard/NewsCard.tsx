@@ -14,7 +14,6 @@ export const NewsCard: FC<INewCard> = ({
     image
 }): ReactElement => {
     const swiperSlide = useSwiperSlide();
-    console.log();
 
     return (
         <div className={

@@ -1,0 +1,43 @@
+@use "app/mixins" as *
+@use "app/functions" as *
+
+.rooms
+    display: block
+    padding-bottom: toRem(60)
+.title
+    @include H4Bold
+    padding-bottom: toRem(20)
+
+.swiper
+    mask-image: linear-gradient(to right, rgba(255, 255, 255, 0) -10%, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 90%, rgba(255, 255, 255, 0))
+    mask-size: 100% 100%
+    mask-position: 0 0
+    mask-repeat: no-repeat
+.slide1
+    display: block
+    background: red
+    width: 100%
+    max-width: toRem(1000)
+    height: toRem(500)
+    margin: 0
+.slide2
+    display: block
+    background: green
+    width: 100%
+    max-width: toRem(1000)
+    height: toRem(500)
+    margin: 0
+
+.slide3
+    display: block
+    background: blue
+    max-width: toRem(1000)
+    height: toRem(500)
+    margin: 0
+
+.slide
+    display: block
+    background: $BackgroundCard
+    max-width: toRem(1000)
+    height: toRem(500)
+    margin: 0

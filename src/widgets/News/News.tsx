@@ -36,8 +36,8 @@ export const News: FC<INews> = (): ReactElement => {
                     pagination={true}
                     modules={[EffectCoverflow, Pagination]}
                     className="mySwiper"
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper: any) => console.log(swiper)}
+                // onSlideChange={() => console.log('slide change')}
+                // onSwiper={(swiper: any) => console.log(swiper)}
                 >
                     {news.map((n: INew) => (
                         <SwiperSlide style={{ width: 'auto' }} key={n.id}>
