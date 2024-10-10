@@ -1,0 +1,19 @@
+@use "app/mixins" as *
+@use "app/functions" as *
+
+.new
+    display: flex
+    width: toRem(400)
+    border-radius: toRem(20)
+    margin: 0 auto
+    trransition: $FastTransition
+    overflow: hidden
+    background: $BackgroundLight
+    &__image
+        display: block
+        width: toRem(200)
+    &__content
+        padding: toRem(20) toRem(10)
+
+.inactive
+    // max-width: toRem(200)
