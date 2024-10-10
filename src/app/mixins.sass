@@ -34,79 +34,79 @@ $FastTransition: .3s ease-in-out all
 $MediumTransition: .7s ease-in-out all
 $SlowTransition: 1s ease-in-out all
 
-@mixin Font ($font-size: 16px, $font-weight: normal)
+@mixin Font ($font-size: toRem(16), $font-weight: normal)
 	font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
 	font-style: normal
 	font-weight: $font-weight
 	font-size: $font-size
 	// line-height: 150%
 
-@mixin H1Regular ($font-size: 16px)
+@mixin H1Regular ($font-size: toRem(16))
 	@include Font($font-size)
 
-@mixin H1Bold ($font-size: 16px, $font-weight: bold)
+@mixin H1Bold ($font-size: toRem(16), $font-weight: bold)
 	@include Font($font-size, $font-weight)
 
-@mixin H2Regular ($font-size: 26px)
+@mixin H2Regular ($font-size: toRem(26))
 	@include Font($font-size)
 
-@mixin H2Bold ($font-size: 26px, $font-weight: bold)
+@mixin H2Bold ($font-size: toRem(26), $font-weight: bold)
 	@include Font($font-size, $font-weight)
 
-@mixin H3Regular ($font-size: 30px)
+@mixin H3Regular ($font-size: toRem(30))
 	@include Font($font-size)
 
-@mixin H3Bold ($font-size: 30px, $font-weight: bold)
+@mixin H3Bold ($font-size: toRem(30), $font-weight: bold)
 	@include Font($font-size, $font-weight)
 
-@mixin H4Regular ($font-size: 36px)
+@mixin H4Regular ($font-size: toRem(36))
 	@include Font($font-size)
 
-@mixin H4Bold ($font-size: 36px, $font-weight: bold)
+@mixin H4Bold ($font-size: toRem(36), $font-weight: bold)
 	@include Font($font-size, $font-weight)
 
-@mixin H5Regular ($font-size: 66px)
+@mixin H5Regular ($font-size: toRem(66))
 	@include Font($font-size, $font-weight)
 
-@mixin H5Bold ($font-size: 66px, $font-weight: bold)
+@mixin H5Bold ($font-size: toRem(66), $font-weight: bold)
 	@include Font($font-size, $font-weight)
 
 /*Paragraph*/
 
-@mixin P1Regular ($font-size: 9px)
+@mixin P1Regular ($font-size: toRem(9))
 	@include Font($font-size)
 
-@mixin P1Bold ($font-size: 9px, $font-weight: bold)
+@mixin P1Bold ($font-size: toRem(9), $font-weight: bold)
 	@include Font($font-size, $font-weight)
 
-@mixin P2Regular ($font-size: 10px)
+@mixin P2Regular ($font-size: toRem(10))
 	@include Font($font-size)
 
-@mixin P2Bold ($font-size: 10px, $font-weight: bold)
+@mixin P2Bold ($font-size: toRem(10), $font-weight: bold)
 	@include Font($font-size, $font-weight)
 
-@mixin P3Regular ($font-size: 12px, $font-weight:200)
+@mixin P3Regular ($font-size: toRem(12), $font-weight:200)
 	@include Font($font-size, $font-weight)
 
-@mixin P3Bold ($font-size: 12px, $font-weight: bold)
+@mixin P3Bold ($font-size: toRem(12), $font-weight: bold)
 	@include Font($font-size, $font-weight)
 
-@mixin P4Regular ($font-size: 14px)
+@mixin P4Regular ($font-size: toRem(14))
 	@include Font($font-size)
 
-@mixin P4Bold ($font-size: 14px, $font-weight: bold)
+@mixin P4Bold ($font-size: toRem(14), $font-weight: bold)
 	@include Font($font-size, $font-weight)
 
-@mixin P5Regular ($font-size: 16px)
+@mixin P5Regular ($font-size: toRem(16))
 	@include Font($font-size)
 
-@mixin P5Bold ($font-size: 16px, $font-weight: bold)
+@mixin P5Bold ($font-size: toRem(16), $font-weight: bold)
 	@include Font($font-size, $font-weight)
 
 /*Fonts Tag*/
 
 /*ButtonsFont*/
-@mixin ButtonFont ($font-size: 16px, $font-weight: bold, $text-transform: uppercase)
+@mixin ButtonFont ($font-size: toRem(16), $font-weight: bold, $text-transform: uppercase)
 	font-family: Montserrat
 	font-style: normal
 	font-weight: $font-weight
@@ -119,31 +119,54 @@ $SlowTransition: 1s ease-in-out all
 		transform: $text-transform
 		align: center
 
-@mixin ButtonF1 ($font-size: 20px)
+@mixin ButtonF1 ($font-size: toRem(20))
 	@include ButtonFont($font-size)
 
-@mixin ButtonF2 ($font-size: 26px)
+@mixin ButtonF2 ($font-size: toRem(26))
 	@include ButtonFont($font-size)
 
-@mixin ButtonF3 ($font-size: 16px)
+@mixin ButtonF3 ($font-size: toRem(16))
 	@include ButtonFont($font-size)
 
-@mixin ButtonF4 ($font-size: 20px)
-	@include ButtonFont($font-size)
-
-@mixin ButtonF5 ($font-size: 12px)
+@mixin ButtonF4 ($font-size: toRem(12))
 	@include ButtonFont($font-size)
 
 @mixin PageWrapper
 	width: 100%
-	max-width: 1500px
+	max-width: toRem(1500)
 	margin: 0 auto
-	min-height: calc( 100vh - 50px )
-	padding-top: 40px
-	padding-bottom: 40px
-	// height: 100%
+	min-height: calc( 100vh - toRem(50) )
+	padding-top: toRem(40)
+	padding-bottom: toRem(40)
 	position: relative
 	@include PagePadding
+
+@mixin WidgetWrapper
+	width: 100%
+	max-width: toRem(1500)
+	margin: 0 auto
+	height: 100%
+	position: relative
+	@include FlexWrapper
+	@include PagePadding
+
+@mixin FlexWrapper
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+@mixin PagePadding
+	padding-left: 5vw
+	padding-right: 5vw
+	@media screen and ( max-width: 1024px )
+		padding-left: calcSize(5vw, 2vw, 1024, 768)
+		padding-right: calcSize(5vw, 2vw, 1024, 768)
+	@media screen and ( max-width: 768px )
+		padding-left: calcSize(toRem(20), toRem(5), 768, 450)
+		padding-right: calcSize(toRem(20), toRem(5), 768, 450)
+	@media screen and ( max-width: 450px )
+		padding-left: toRem(5)
+		padding-right: toRem(5)
 
 	// background-repeat: no-repeat
 	// background-position: center
@@ -161,21 +184,3 @@ $SlowTransition: 1s ease-in-out all
 		//	 bottom: 0
 		//	 z-index: -1
 		//	 backdrop-filter: grayscale(75%) hue-rotate(170deg) sepia(55%) // blur(1px)
-
-@mixin FlexWrapper
-	display: flex
-	justify-content: space-between
-	align-items: center
-
-@mixin PagePadding
-	padding-left: 5vw
-	padding-right: 5vw
-	@media screen and ( max-width: 1024px )
-		padding-left: calcSize(5vw, 2vw, 1024, 768)
-		padding-right: calcSize(5vw, 2vw, 1024, 768)
-	@media screen and ( max-width: 768px )
-		padding-left: calcSize(20px, 5px, 768, 450px)
-		padding-right: calcSize(20px, 5px, 768, 450px)
-	@media screen and ( max-width: 450px )
-		padding-left: 5px
-		padding-right: 5px
