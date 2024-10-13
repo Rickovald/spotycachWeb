@@ -13,7 +13,8 @@ interface IRooms {
 export const Rooms: FC<IRooms> = (): ReactElement => {
     return (
         <div className={s.rooms}>
-            <h2 className={s.title}>Комнаты</h2><div className={s.swiper}>
+            <h2 className={s.title}>Комнаты</h2>
+            <div className={s.swiper}>
                 <Swiper
                     effect={'coverflow'}
                     grabCursor={true}
@@ -34,19 +35,19 @@ export const Rooms: FC<IRooms> = (): ReactElement => {
                     onSwiper={(swiper: any) => console.log(swiper)}
                 >
                     <SwiperSlide>
-                        <div className={s.slide1}>
+                        <div className={s.slide}>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className={s.slide2}>
+                        <div className={s.slide}>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className={s.slide1}>
+                        <div className={s.slide}>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className={s.slide2}>
+                        <div className={s.slide}>
                         </div>
                     </SwiperSlide>
                 </Swiper>

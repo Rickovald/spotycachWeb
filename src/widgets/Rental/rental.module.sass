@@ -1,0 +1,57 @@
+@use "app/mixins" as *
+@use "app/functions" as *
+
+.rental
+    display: block
+    padding-bottom: toRem(60)
+.title
+    @include H4Bold
+    padding-bottom: toRem(20)
+
+.content
+    @include FlexWrapper
+    gap: toRem(20)
+    justify-content: center
+    flex-wrap: wrap
+
+.card
+    @include FlexWrapper
+    justify-content: center
+    flex-basis: calc(100% / 6)
+    width: toRem(200)
+    height: toRem(200)
+    background: $BackgroundLight
+    border-radius: toRem(20)
+    transition: $FastTransition
+    &:hover
+        background: $BackgroundCard
+        color: $LightTextColor
+        transform: scale(1.07)
+    &:hover + *
+        transform: scale(1.05)
+    &:has(+ *:hover)
+        transform: scale(1.05)
+    &:hover + * + *
+        transform: scale(1.025)
+    &:has(+ * + *:hover)
+        transform: scale(1.025)
+// .content
+//     display: grid
+//     grid-template-columns: repeat(3, 1fr)
+//     grid-gap: 10px
+//     width: toRem(500)
+
+// .card
+//     background-color: #ccc
+//     width: toRem(20)
+//     height: toRem(20)
+//     transition: transform 0.2s ease-in-out
+//     &:hover
+//         transform: scale(1.2)
+//         z-index: 1
+//     &:hover ~ .card
+//         transform: scale(0.8)
+//     &:hover:nth-child(3n+1) ~ .card:nth-child(3n+2),
+//     &:hover:nth-child(3n+2) ~ .card:nth-child(3n+3),
+//     &:hover:nth-child(3n+3) ~ .card:nth-child(3n+1)
+//         transform: scale(0.8)
