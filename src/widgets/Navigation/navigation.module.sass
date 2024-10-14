@@ -14,15 +14,28 @@
 .links
 	display: flex
 
-.link
+.link, .profile
 	color: $LightTextColor
 	height: toRem(50)
 	padding: 0 toRem(20)
 	transition: $FastTransition
+
 	@include ButtonFont($font-weight: normal, $text-transform: inherit)
 	&:hover
 		color: $SecondAccent
 	&:last-child
 		padding-right: 0
-
+	&:last-child, &:first-child
+		margin-left: auto
 		// background: $BackgroundCard
+.profile
+	align-self: flex-end
+	padding: toRem(10) 0
+	path
+		transition: $FastTransition
+	&:hover path
+		fill: $SecondAccent
+	&_pic
+		height: 100%
+		width: 100%
+		fill: $LightTextColor
