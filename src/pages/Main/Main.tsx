@@ -4,6 +4,7 @@ import { News } from 'widgets/News';
 import { Rooms } from 'widgets/Rooms';
 import { Rental } from 'widgets/Rental';
 import { Faq } from 'widgets/Faq';
+import { Reviews } from 'widgets/Reviews';
 
 export const Main: FC = (): ReactElement => {
     return (
@@ -12,6 +13,7 @@ export const Main: FC = (): ReactElement => {
             <Rooms />
             <Rental />
             <Faq />
+            <Reviews />
         </div>
     );
 };

@@ -1,0 +1,40 @@
+@use "app/mixins" as *
+@use "app/functions" as *
+
+.reviews
+    display: block
+    padding-bottom: toRem(60)
+
+.title
+    @include H4Bold
+    padding-bottom: toRem(20)
+
+.content
+    @include FlexWrapper
+    align-items: flex-start
+    gap: toRem(20)
+
+.cards
+    max-width: 50%
+    width: 100%
+.card
+    padding: toRem(20)
+    margin-bottom: toRem(20)
+    background: $BackgroundLight
+    border-radius: toRem(20)
+    &__title
+        margin-bottom: toRem(10)
+        @include H1Bold
+        // &:hover
+    //     background: $BackgroundCard
+    //     color: $LightTextColor
+    //     transform: scale(1.07)
+    // &:hover + *
+        // color: $SecondAccent
+
+.form
+    max-width: 50%
+    width: 100%
+    height: toRem(500)
+    background: $BackgroundLight
+    border-radius: toRem(20)
