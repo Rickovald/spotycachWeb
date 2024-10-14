@@ -1,11 +1,11 @@
 import { FC, ReactElement } from 'react';
-import s from './rental.module.sass';
+import s from './rentalNav.module.sass';
 
-interface IRental {
+interface IRentalCards {
 
 };
 
-export const Rental: FC<IRental> = (): ReactElement => {
+export const RentalNav: FC<IRentalCards> = (): ReactElement => {
     return (
         <div className={s.rental}>
             <h2 className={s.title}>Аренда</h2>
