@@ -1,0 +1,34 @@
+@use "app/mixins" as *
+@use "app/functions" as *
+
+.faq
+    display: block
+    padding-bottom: toRem(60)
+
+.title
+    @include H4Bold
+    padding-bottom: toRem(20)
+
+.card
+    background: $BackgroundLight
+    padding: toRem(20)
+    border-radius: toRem(20)
+    margin-bottom: toRem(20)
+    cursor: pointer
+
+.arrowBox
+    transition: $FastTransition
+.arrow
+    width: toRem(20)
+    height: toRem(20)
+.active
+    transform: rotate(180deg)
+
+.question
+    display: flex
+    align-items: center
+    justify-content: space-between
+    // padding-bottom: toRem(20)
+// .answer
+//     display: block
+//     margin-top: toRem(20)

@@ -3,6 +3,7 @@ import s from './main.module.sass';
 import { News } from 'widgets/News';
 import { Rooms } from 'widgets/Rooms';
 import { Rental } from 'widgets/Rental';
+import { Faq } from 'widgets/Faq';
 
 export const Main: FC = (): ReactElement => {
     return (
@@ -10,6 +11,7 @@ export const Main: FC = (): ReactElement => {
             <News />
             <Rooms />
             <Rental />
+            <Faq />
         </div>
     );
 };
