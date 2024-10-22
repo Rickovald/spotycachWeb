@@ -3,23 +3,22 @@
 
 .rental
     display: block
-    padding-bottom: toRem(60)
-.title
-    @include H4Bold
-    padding-bottom: toRem(20)
+    height: 100%
 
 .content
     @include FlexWrapper
     gap: toRem(20)
     justify-content: center
     flex-wrap: wrap
+    height: 100%
 
 .card
     @include FlexWrapper
     justify-content: center
     flex-basis: calc(100% / 6)
     width: toRem(200)
-    height: toRem(200)
+    height: 100%
+    padding: toRem(20) 0
     background: $BackgroundLight
     border-radius: toRem(20)
     transition: $FastTransition

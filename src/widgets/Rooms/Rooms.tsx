@@ -13,7 +13,6 @@ interface IRooms {
 export const Rooms: FC<IRooms> = (): ReactElement => {
     return (
         <div className={s.rooms}>
-            <h2 className={s.title}>Комнаты</h2>
             <div className={s.swiper}>
                 <Swiper
                     effect={'coverflow'}
@@ -31,8 +30,8 @@ export const Rooms: FC<IRooms> = (): ReactElement => {
                     spaceBetween={50}
                     modules={[EffectCoverflow, Pagination, Navigation]}
                     className="mySwiper"
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper: any) => console.log(swiper)}
+                // onSlideChange={() => console.log('slide change')}
+                // onSwiper={(swiper: any) => console.log(swiper)}
                 >
                     <SwiperSlide>
                         <div className={s.slide}>

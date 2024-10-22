@@ -1,4 +1,13 @@
 @use "app/mixins" as *
+@use "app/functions" as *
 
 .root
 	@include PageWrapper
+
+.title
+	@include H4Bold
+	padding-bottom: toRem(20)
+
+.rentalWrapper
+	height: toRem(150)
+	margin-bottom: toRem(60)

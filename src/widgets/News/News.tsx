@@ -17,7 +17,6 @@ interface INews {
 export const News: FC<INews> = (): ReactElement => {
     return (
         <div className={s.news}>
-            <h2 className={s.title}>Новости</h2>
             <div className={s.swiper}>
                 <Swiper
                     effect={'coverflow'}

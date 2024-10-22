@@ -39,7 +39,6 @@ export const Faq: FC<IFaq> = (): ReactElement => {
     ];
     return (
         <div className={s.faq}>
-            <h2 className={s.title}>FAQ</h2>
             {faqs.map(faq => (
                 <div className={s.card} key={faq.id}>
                     <div

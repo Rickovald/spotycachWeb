@@ -8,7 +8,7 @@ interface IReviews {
 export const Reviews: FC<IReviews> = (): ReactElement => {
     const reviews = [
         {
-            id: 1,
+            id: 0,
             name: 'Иван Иванов',
             text: 'Да любые блять, какие дадут, тем и радуйся, уеба'
         },
@@ -18,14 +18,13 @@ export const Reviews: FC<IReviews> = (): ReactElement => {
             text: 'Да любые блять, какие дадут, тем и радуйся, уеба'
         },
         {
-            id: 1,
+            id: 2,
             name: 'Иван Иванов',
             text: 'Да любые блять, какие дадут, тем и радуйся, уеба'
         }
     ];
     return (
         <div className={s.reviews}>
-            <h2 className={s.title}>Отзывы</h2>
             <div className={s.content}>
                 <div className={s.cards}>
                     {reviews.map((r) => (

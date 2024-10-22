@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // COMPONENT IMPORTS
+import { Appoint } from 'pages/Appoint/Appoint';
 import { Rental } from 'pages/Rental/Rental';
 import { Profile } from 'pages/Profile/Profile';
 import { Footer } from 'widgets/Footer';
@@ -36,6 +37,7 @@ const App = () => {
                             element={<Contacts />}
                         />
                         {/* COMPONENT ROUTES */}
+                        <Route path='/appoint' element={<Appoint />}/>
                         <Route path='/rental' element={<Rental />}/>
                         <Route path='/profile' element={<Profile />}/>
                         <Route path='*' element={<Error404 />} />
