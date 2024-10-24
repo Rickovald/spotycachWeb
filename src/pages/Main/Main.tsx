@@ -23,6 +23,7 @@ export const Main: FC = (): ReactElement => {
             <Faq />
             <h2 className={s.title}>Отзывы</h2>
             <Reviews />
+            <h2 className={s.title}>Записаться на репетицию</h2>
         </div>
     );
 };
