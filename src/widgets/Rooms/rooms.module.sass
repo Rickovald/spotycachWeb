@@ -9,12 +9,30 @@
     mask-size: 100% 100%
     mask-position: 0 0
     mask-repeat: no-repeat
-.slide
-    display: block
+
+.room
     background: $BackgroundLight
+    padding: toRem(60) toRem(100)
     width: 100%
     max-width: toRem(1000)
     height: toRem(500)
     margin: 0
     // margin-left: toRem(100)
     border-radius: toRem(20)
+    cursor: default
+    position: relative
+    &__title
+        margin-bottom: toRem(30)
+        @include H4Bold
+    &__btns
+        position: absolute
+        bottom: toRem(60)
+        right: toRem(100)
+        display: flex
+        flex-direction: column
+        gap: toRem(10)
+        align-items: flex-end
+.stuff
+    &__title
+        margin-bottom: toRem(10)
+        @include H2Bold

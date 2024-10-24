@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // COMPONENT IMPORTS
+import { AboutRooms } from 'pages/AboutRooms/AboutRooms';
 import { Rental } from 'pages/Rental/Rental';
 import { Profile } from 'pages/Profile/Profile';
 import { Footer } from 'widgets/Footer';
@@ -11,6 +12,7 @@ import { About } from 'pages/About/';
 import { Contacts } from 'pages/Contacts';
 import { Header } from 'widgets/Header';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ScrollToTop } from 'shared/scrollToTop';
 
 const queryClient = new QueryClient();
 const App = () => {
@@ -24,6 +26,7 @@ const App = () => {
                         <link rel="canonical" href="http://mysite.com/example" />
                     </Helmet>
                     <Router>
+                        <ScrollToTop />
                         <Header />
                         <Routes>
                             <Route
@@ -39,6 +42,7 @@ const App = () => {
                                 element={<Contacts />}
                             />
                             {/* COMPONENT ROUTES */}
+                            <Route path='/rooms' element={<AboutRooms />} />
                             {/* <Route path='/week_grid' element={<WeekGrid />}/> */}
                             <Route path='/rental' element={<Rental />} />
                             <Route path='/profile' element={<Profile />} />

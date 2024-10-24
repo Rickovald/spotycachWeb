@@ -7,12 +7,12 @@ export const Navigation: FC = (): ReactElement => {
     return (
         <div className={s.root}>
             <div className={s.wrapper}>
-                <NavLink className={s.link} to='/'>Main</NavLink>
-                <NavLink className={s.link} to='/about'>About</NavLink>
-                <NavLink className={s.link} to='/contacts'>Contacts</NavLink>
+                <NavLink className={s.link} to=''>Главная</NavLink>
+                <NavLink className={s.link} to='about'>О нас</NavLink>
+                <NavLink className={s.link} to='contacts'>Контакты</NavLink>
                 {/* COMPONENT LINKS */}
-                    <NavLink className={s.link} to='appoint'>appoint</NavLink>
-                <NavLink className={s.link} to='rental'>rental</NavLink>
+                <NavLink className={s.link} to='rooms'>Комнаты</NavLink>
+                <NavLink className={s.link} to='rental'>Аренда техники</NavLink>
                 <NavLink className={s.profile} to='profile'>
                     <Profile className={s.profile_pic} />
                 </NavLink>

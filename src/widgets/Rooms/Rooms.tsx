@@ -5,12 +5,25 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
+import { Room } from './Room';
 
 interface IRooms {
 
 };
 
 export const Rooms: FC<IRooms> = (): ReactElement => {
+    const roomData = [
+        {
+            id: 0,
+            title: 'Большой зал',
+            stuff: ['Гитара', 'Барабан', 'Звук', 'Комплекты', 'Комплекты']
+        },
+        {
+            id: 1,
+            title: 'Малый зал',
+            stuff: ['Гитара', 'Барабан', 'Звук', 'Комплекты', 'Комплекты']
+        }
+    ];
     return (
         <div className={s.rooms}>
             <div className={s.swiper}>
@@ -33,22 +46,16 @@ export const Rooms: FC<IRooms> = (): ReactElement => {
                 // onSlideChange={() => console.log('slide change')}
                 // onSwiper={(swiper: any) => console.log(swiper)}
                 >
-                    <SwiperSlide>
-                        <div className={s.slide}>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className={s.slide}>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className={s.slide}>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className={s.slide}>
-                        </div>
-                    </SwiperSlide>
+                    {roomData.map((room) => (
+                        <SwiperSlide key={room.id}>
+                            <Room data={room} />
+                        </SwiperSlide>
+                    ))}
+                    {roomData.map((room) => (
+                        <SwiperSlide key={room.id}>
+                            <Room data={room} />
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
             </div>
         </div>

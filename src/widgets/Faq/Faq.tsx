@@ -10,11 +10,6 @@ interface IFaq {
 
 export const Faq: FC<IFaq> = (): ReactElement => {
     const [openedId, setOpenedId] = useState<number | null>(null);
-    // const variants = {
-    //     open: { opacity: 1, height: '100%' },
-    //     closed: { opacity: 0, height: '0px' }
-    // };
-
     const faqs = [
         {
             id: 1,

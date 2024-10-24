@@ -1,33 +1,24 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { User } from 'shared/interfaces';
+import { IQueryResult } from 'shared/interfaces';
+
+//! Выделить в env
+const apiAddr = 'http://localhost:5001';
 
 /**
- * A hook that fetches user data from the GitHub API.
+ * This function is a custom hook that fetches starship data from the SWAPI.
  *
- * @param {string} username - The GitHub username of the user.
- * @returns {Object} - An object containing the user data, loading state, and error state.
- * @property {User} user - The user data.
- * @property {boolean} isLoading - The loading state.
- * @property {boolean} isError - The error state.
+ * @param {string} endpoint - The API endpoint to fetch data from
+ * @param {string} key - The unique key for the query
+ * @return {{ data: any, isLoading: boolean, isError: boolean }} An object containing starships data, loading state, and error state
  */
-export const useGetUserData = (username: string): {
-    user: User,
-    isLoading: boolean,
-    isError: boolean
-} => {
-    const { data: user, isLoading, isError } = useQuery<User>({
-        queryKey: ['user', username],
+export const useGetQuery = <T>(endpoint: string, key: string): IQueryResult<T> => {
+    const { data, isLoading, isError } = useQuery({
+        queryKey: [key],
         staleTime: 60000,
-        queryFn: async () => {
-            const response = await axios.get(`https://api.github.com/users/${username}`);
-            return response.data;
-        }
+        queryFn: async () =>
+            await axios.get(`${apiAddr}/${endpoint}`)
+                .then((response) => response.data)
     });
-
-    if (user === undefined) {
-        throw new Error('User data is not available');
-    }
-
-    return { user, isLoading, isError };
+    return { data, isLoading, isError };
 };
