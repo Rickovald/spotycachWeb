@@ -1,0 +1,18 @@
+@use "app/mixins" as *
+@use "app/functions" as *
+
+.button > *
+	display: block
+	padding: toRem(10) toRem(20)
+	width: fit-content
+	// color: $LightTextColor
+	background-color: rgba(0,0,0,.15)
+	border-radius: toRem(10)
+	cursor: pointer
+	@include H1Bold
+	color: $DarkTextColor
+	transition: $FastTransition
+	&:hover
+		color: $LightTextColor
+		transform: scale(1.1)
+		background-color: $BackgroundCard

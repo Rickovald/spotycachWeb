@@ -1,7 +1,4 @@
-export interface User {
-    login: string;
-    avatar_url: string;
-}
+import { ReactElement } from 'react';
 
 export interface INew {
     id: number;
@@ -37,4 +34,38 @@ export interface Schedule {
     id: number;
     week: string;
     slots: Slots;
+}
+
+export interface IContextProps {
+    children: string | ReactElement | ReactElement[];
+}
+
+export type UserRole = 'unAuthorized' | 'user' | 'moderator' | 'admin';
+export const ROLES: { [key: string]: UserRole; } = {
+    unAuthorized: 'unAuthorized',
+    user: 'user',
+    moderator: 'moderator',
+    admin: 'admin'
+};
+
+export interface User {
+    id: number;
+    username: string;
+    avatar_url: string;
+}
+
+export interface ILoginData {
+    email: string;
+    password: string;
+};
+
+export interface UserContextValue {
+    currentUserId: string | null;
+    currentUserName: string | null;
+    currentUserRole: UserRole;
+    setCurrentUser: (
+        currentUserId: string | null,
+        currentUserName: string | null,
+        currentUserRole: UserRole,
+    ) => void;
 }
