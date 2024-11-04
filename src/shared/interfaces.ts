@@ -69,3 +69,11 @@ export interface UserContextValue {
         currentUserRole: UserRole,
     ) => void;
 }
+
+export interface DecodedUserToken {
+    payload: {
+        role: string;
+        userId: string;
+        // Add properties here that you expect to be present in the payload
+    };
+}

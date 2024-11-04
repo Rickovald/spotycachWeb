@@ -1,4 +1,4 @@
-import { FC, ReactElement, useEffect, useState } from 'react';
+import { FC, ReactElement, useState } from 'react';
 import s from './appoint.module.sass';
 import { IRoomData } from 'shared/interfaces';
 import { Hours } from './Hours';
@@ -36,8 +36,6 @@ export const Appoint: FC<IAppoint> = (): ReactElement => {
     const nextWeek = () => {
         const newDate = new Date(currentDate);
         newDate.setDate(currentDate.getDate() + 7);
-        console.log('newDate.getDay()', newDate.getDate());
-
         if (newDate.getDate() !== new Date().getDate()) {
             setIsButtonHidden(false);
         } else {
@@ -56,9 +54,9 @@ export const Appoint: FC<IAppoint> = (): ReactElement => {
         }
         setCurrentDate(newDate);
     };
-    useEffect(() => {
-        console.log(selectedGlobal);
-    }, [selectedGlobal]);
+    // useEffect(() => {
+    //     console.log(selectedGlobal);
+    // }, [selectedGlobal]);
     const handleSelectedChange = (hourId: string, selected: Set<string>) => {
         if (selected.size === 0) {
             setSelectedGlobal((prevSelected) => {
@@ -77,6 +75,15 @@ export const Appoint: FC<IAppoint> = (): ReactElement => {
                 ? `${s.appoint} ${s.inactive_op}`
                 : s.appoint
         } onClick={closeModal}>
+            {selectedGlobal && Object.keys(selectedGlobal).length > 0 && (
+                <div className={s.selected}>
+                    {/* {Object.keys(selectedGlobal).map((key) => (
+                        <div key={key} className={s.selected__item}>
+                            {key} - {Array.from(selectedGlobal[key]).join(', ')}
+                        </div>
+                    ))} */}
+                </div>
+            )}
             <div className={
                 !isOpen
                     ? `${s.content} ${s.inactive}`

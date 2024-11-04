@@ -1,4 +1,4 @@
-import { FC, ReactElement, useEffect } from 'react';
+import { FC, ReactElement } from 'react';
 import s from './rentalNav.module.sass';
 import { useNavigate } from 'react-router-dom';
 import { TRent, TSearchParams } from 'shared/types';
@@ -18,10 +18,10 @@ export const RentalNav: FC<IRentalCards> = ({ setSearchParams, input, type }): R
         } else setSearchParams({ input: value });
     };
 
-    useEffect(() => {
-        // setSearchParams({ input: 'Гитары' });
-        console.log(type);
-    }, [type]);
+    // useEffect(() => {
+    //     // setSearchParams({ input: 'Гитары' });
+    //     console.log(type);
+    // }, [type]);
 
     return (
         <div className={s.rental}>

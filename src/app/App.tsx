@@ -15,6 +15,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ScrollToTop } from 'shared/scrollToTop';
 import AppProvider from 'features/Contexts/Index';
 import { Appoint } from 'widgets/Appoint';
+import { jwtDecode } from 'jwt-decode';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -26,6 +27,10 @@ const queryClient = new QueryClient({
     }
 });
 const App = () => {
+    const user = localStorage.getItem('accessToken');
+    if (user) {
+        console.log((jwtDecode(user)));
+    }
     return (
         <HelmetProvider>
             <AppProvider>
