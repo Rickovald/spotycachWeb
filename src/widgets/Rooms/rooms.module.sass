@@ -21,17 +21,35 @@
     border-radius: toRem(20)
     cursor: default
     position: relative
+    overflow: hidden
     &__title
         margin-bottom: toRem(30)
         @include H4Bold
     &__btns
         position: absolute
-        bottom: toRem(60)
-        right: toRem(100)
+        bottom: toRem(0)
+        right: toRem(0)
         display: flex
         flex-direction: column
         gap: toRem(10)
         align-items: flex-end
+    &__wrapper
+        width: 100%
+        height: 100%
+        transition: $FastTransition
+        position: relative
+    &__modal
+        position: absolute
+        top: toRem(60)
+        left: toRem(100)
+        transform: translateX(150%)
+        height: calc( 100% - toRem(120) )
+        width: calc( 100% - toRem(200) )
+        transition: $FastTransition
+.inactive
+    transform: translateX(-150%)
+.active
+    transform: translateX(0)
 .stuff
     &__title
         margin-bottom: toRem(10)

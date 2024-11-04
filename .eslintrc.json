@@ -34,6 +34,12 @@
         "semi": [
             "error",
             "always"
+        ],
+        "comma-spacing": [
+            "error",
+            {
+                "after": true
+            }
         ]
     }
 }

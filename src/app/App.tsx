@@ -13,6 +13,8 @@ import { Contacts } from 'pages/Contacts';
 import { Header } from 'widgets/Header';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ScrollToTop } from 'shared/scrollToTop';
+import AppProvider from 'features/Contexts/Index';
+import { Appoint } from 'widgets/Appoint';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -26,40 +28,43 @@ const queryClient = new QueryClient({
 const App = () => {
     return (
         <HelmetProvider>
-            <QueryClientProvider client={queryClient}>
-                <div className='App'>
-                    <Helmet>
-                        <meta charSet="utf-8" />
-                        <title>Page title</title>
-                        <link rel="canonical" href="http://mysite.com/example" />
-                    </Helmet>
-                    <Router>
-                        <ScrollToTop />
-                        <Header />
-                        <Routes>
-                            <Route
-                                path='/'
-                                element={<Main />}
-                            />
-                            <Route
-                                path='/about'
-                                element={<About />}
-                            />
-                            <Route
-                                path='/contacts'
-                                element={<Contacts />}
-                            />
-                            {/* COMPONENT ROUTES */}
-                            <Route path='/rooms' element={<AboutRooms />} />
-                            {/* <Route path='/week_grid' element={<WeekGrid />}/> */}
-                            <Route path='/rental' element={<Rental />} />
-                            <Route path='/profile' element={<Profile />} />
-                            <Route path='*' element={<Error404 />} />
-                        </Routes>
-                        <Footer />
-                    </Router>
-                </div>
-            </QueryClientProvider>
+            <AppProvider>
+                <QueryClientProvider client={queryClient}>
+                    <div className='App'>
+                        <Helmet>
+                            <meta charSet="utf-8" />
+                            <title>Page title</title>
+                            <link rel="canonical" href="http://mysite.com/example" />
+                        </Helmet>
+                        <Router>
+                            <ScrollToTop />
+                            <Header />
+                            <Routes>
+                                <Route
+                                    path='/'
+                                    element={<Main />}
+                                />
+                                <Route
+                                    path='/about'
+                                    element={<About />}
+                                />
+                                <Route
+                                    path='/contacts'
+                                    element={<Contacts />}
+                                />
+                                {/* COMPONENT ROUTES */}
+                                <Route path='/rooms' element={<AboutRooms />} />
+                                {/* <Route path='/week_grid' element={<WeekGrid />}/> */}
+                                <Route path='/rental' element={<Rental />} />
+                                <Route path='/profile' element={<Profile />} />
+                                <Route path='*' element={<Error404 />} />
+                            </Routes>
+                            <Footer />
+                        </Router>
+                        <Appoint />
+                    </div>
+                </QueryClientProvider>
+            </AppProvider>
         </HelmetProvider>
     );
 };

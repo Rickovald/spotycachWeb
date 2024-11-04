@@ -2,17 +2,31 @@
 @use "app/functions" as *
 
 .button > *
-	display: block
-	padding: toRem(10) toRem(20)
-	width: fit-content
-	// color: $LightTextColor
-	background-color: rgba(0,0,0,.15)
-	border-radius: toRem(10)
-	cursor: pointer
-	@include H1Bold
 	color: $DarkTextColor
 	transition: $FastTransition
+	background-color: rgba(0,0,0,.15)
+	border-radius: toRem(10)
+	display: flex
+	justify-content: center
+	align-items: center
+	width: fit-content
+	cursor: pointer
 	&:hover
 		color: $LightTextColor
-		transform: scale(1.1)
 		background-color: $BackgroundCard
+.button
+	transition: $FastTransition
+	overflow: hidden
+	&_secondary  > *
+		height: toRem(20)
+		padding: toRem(15) toRem(10)
+		@include H1Regular
+		&:hover
+			transform: scale(1)
+	&_primary  > *
+		height: toRem(40)
+		padding: toRem(10) toRem(20)
+		@include H1Bold
+
+	&:hover
+		transform: scale(1.1)
