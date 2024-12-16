@@ -15,16 +15,18 @@ const variants = {
 export const Rental: FC<IRental> = (): ReactElement => {
     const [input, setSearchParams] = useGetRentQuery();
     return (
-        <motion.nav className={s.rental}
+        <motion.div className={s.rental}
             animate='open'
             initial="init"
+            transition={{ duration: 0.5, type: 'spring' }}
             variants={variants}>
+
             <Fader state={!!input}>
                 <RentalNav input={input} setSearchParams={setSearchParams} />
             </Fader>
             <div className={s.content}>
                 input: {input}
             </div>
-        </motion.nav>
+        </motion.div>
     );
 };

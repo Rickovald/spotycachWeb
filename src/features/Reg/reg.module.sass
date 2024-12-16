@@ -17,7 +17,7 @@
     display: flex
     align-items: center
     justify-content: center
-    transition: $FastTransition
+    transition: $MediumTransition
     opacity: 1
 
 .content
@@ -28,7 +28,7 @@
     justify-content: space-evenly
     overflow: hidden
     background: $BackgroundLight
-    transition: $FastTransition
+    transition: $MediumTransition
     padding: toRem(20)
     border-radius: toRem(20)
     gap: toRem(10)
@@ -37,6 +37,15 @@
     height: toRem(40)
     padding: 0 toRem(20)
     font-size: toRem(18)
+    &_phone
+        width: 100%
+        height: toRem(40)
+        font-size: toRem(18)
+        div
+            display: none
+        input
+            height: 100%
+            padding: 0 toRem(20)
 .button
     cursor: pointer
     width: 100%

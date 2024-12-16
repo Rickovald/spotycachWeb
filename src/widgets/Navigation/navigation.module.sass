@@ -7,9 +7,8 @@
 	color: $LightTextColor
 
 .wrapper
-	@include WidgetWrapper
-	@include FlexWrapper
 	justify-content: center
+	@include WidgetWrapper
 
 .links
 	display: flex
@@ -20,7 +19,6 @@
 	padding: 0 toRem(20)
 	transition: $FastTransition
 
-	@include ButtonFont($font-weight: normal, $text-transform: inherit)
 	&:hover
 		color: $SecondAccent
 	&:last-child
@@ -28,7 +26,10 @@
 	&:last-child, &:first-child
 		margin-left: auto
 		// background: $BackgroundCard
+	@include ButtonFont($font-weight: normal, $text-transform: inherit)
+
 .profile
+	cursor: pointer
 	align-self: flex-end
 	padding: toRem(10) 0
 	path

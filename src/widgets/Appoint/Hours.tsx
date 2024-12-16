@@ -46,7 +46,7 @@ export const Hours: FC<IHours> = ({ hours, hourId, setSelectedGlobal }): ReactEl
             className={s.hours}
             onMove={onMove}
             selectables={`.${s.hour}`}>
-            {hours.map((hour, index) => (
+            {hours.map((hour) => (
                 <div
                     className={
                         selected.has(`${hourId} ${hour}`)
@@ -54,7 +54,7 @@ export const Hours: FC<IHours> = ({ hours, hourId, setSelectedGlobal }): ReactEl
                             : s.hour
                     }
                     data-key={`${hourId} ${hour}`}
-                    key={index}
+                    key={`${hourId} ${hour}`}
                 >
                     {hour}
                 </div>

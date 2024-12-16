@@ -16,6 +16,8 @@ import { ScrollToTop } from 'shared/scrollToTop';
 import AppProvider from 'features/Contexts/Index';
 import { Appoint } from 'widgets/Appoint';
 import { jwtDecode } from 'jwt-decode';
+import { Auth } from 'features/Auth';
+import { Reg } from 'features/Reg';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -30,7 +32,7 @@ const App = () => {
     const user = localStorage.getItem('accessToken');
     if (user) {
         console.log((jwtDecode(user)));
-    }
+    };
     return (
         <HelmetProvider>
             <AppProvider>
@@ -38,7 +40,7 @@ const App = () => {
                     <div className='App'>
                         <Helmet>
                             <meta charSet="utf-8" />
-                            <title>Page title</title>
+                            <title>Cпотыкач</title>
                             <link rel="canonical" href="http://mysite.com/example" />
                         </Helmet>
                         <Router>
@@ -61,12 +63,15 @@ const App = () => {
                                 <Route path='/rooms' element={<AboutRooms />} />
                                 {/* <Route path='/week_grid' element={<WeekGrid />}/> */}
                                 <Route path='/rental' element={<Rental />} />
-                                <Route path='/profile' element={<Profile />} />
+                                {user && <Route path='/profile' element={<Profile />} />}
+
                                 <Route path='*' element={<Error404 />} />
                             </Routes>
                             <Footer />
                         </Router>
                         <Appoint />
+                        {!user && <Auth />}
+                        {!user && <Reg />}
                     </div>
                 </QueryClientProvider>
             </AppProvider>

@@ -1,53 +1,53 @@
-import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect, useCallback } from 'react';
 
 interface ModalContextType<T> {
-    isOpen: boolean;
-    openModal: (data: T) => void;
+    openId: string;
+    openModal: (id: string, data?: T) => void;
     closeModal: () => void;
     modalData: T | null;
 }
 
-const ModalContext = createContext<ModalContextType<unknown> | undefined>(undefined);
+// Создаём контекст с типом, который по умолчанию может быть null
+const ModalContext = createContext<ModalContextType<unknown> | null>(null);
 
-export const ModalProvider = <T extends unknown>({ children }: { children: ReactNode; }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [modalData, setModalData] = useState<T | null>(null); // Используем T
+export const ModalProvider = <T, >({ children }: { children: ReactNode }) => {
+    const [openId, setOpenId] = useState<string>('');
+    const [modalData, setModalData] = useState<T | null | unknown>(null);
 
-    const openModal = (data: unknown) => { // Используем T здесь
-        setModalData(data as T);
-        setIsOpen(true);
-    };
+    // openModal использует T для передачи данных
+    const openModal = useCallback((id: string, data?: T | unknown) => {
+        if (openId !== id) {
+            setModalData(data ?? null);
+            setOpenId(id);
+        }
+    }, []);
 
-    const closeModal = () => {
-        setIsOpen(false);
+    const closeModal = useCallback(() => {
+        setOpenId('');
         setTimeout(() => {
             setModalData(null);
         }, 300);
-        // setModalData(null);
-    };
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden'; // Отключаем прокрутку
-        } else {
-            document.body.style.overflow = 'auto'; // Включаем прокрутку
-        }
+    }, []);
 
-        // Чистим эффект
+    useEffect(() => {
+        document.body.style.overflow = openId ? 'hidden' : 'auto';
         return () => {
-            document.body.style.overflow = 'auto'; // Включаем прокрутку при размонтировании
+            document.body.style.overflow = 'auto';
         };
-    }, [isOpen]);
+    }, [openId]);
+
     return (
-        <ModalContext.Provider value={{ isOpen, openModal, closeModal, modalData }}>
+        <ModalContext.Provider value={{ openId, openModal, closeModal, modalData }}>
             {children}
         </ModalContext.Provider>
     );
 };
 
-export const useModal = <T extends unknown>() => {
-    const context = useContext(ModalContext) as ModalContextType<T>;
+// useModal возвращает строго типизированный контекст
+export const useModal = <T, >(): ModalContextType<T> => {
+    const context = useContext(ModalContext);
     if (!context) {
         throw new Error('useModal must be used within a ModalProvider');
     }
-    return context;
+    return context as ModalContextType<T>; // Типизация контекста
 };

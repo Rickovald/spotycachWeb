@@ -5,6 +5,7 @@ import { Button } from 'shared/Button';
 import { NavLink } from 'react-router-dom';
 // import { Appoint } from 'widgets/Appoint';
 import { useModal } from 'features/Contexts/ModalContext';
+import { APPOINT_MODAL } from 'shared/types';
 // import { motion } from 'framer-motion';
 
 interface IRoom {
@@ -55,7 +56,7 @@ export const Room: FC<IRoom> = ({ data }): ReactElement => {
                     <Button type={'primary'}>
 
                         <div
-                            onClick={() => openModal(data)}
+                            onClick={() => openModal(APPOINT_MODAL, data)}
                         // onClick={() => (setModalOpen(!modalOpen))}
                         >
                             Записаться

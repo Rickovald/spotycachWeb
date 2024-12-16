@@ -70,10 +70,29 @@ export interface UserContextValue {
     ) => void;
 }
 
-export interface DecodedUserToken {
-    payload: {
-        role: string;
-        userId: string;
-        // Add properties here that you expect to be present in the payload
-    };
+export interface IGroup {
+    id: string;
+    name: string;
 }
+export interface DecodedUserToken {
+    role: string;
+    userId: string;
+    avatar: string;
+    email: string;
+    exp: number;
+    group: IGroup[];
+    iat: number;
+    phone: string;
+    userName: string;
+    // Add properties here that you expect to be present in the payload
+}
+
+// avatar: "/fasfas"
+// email: "test2@mail.com"
+// exp: 1730833613
+// group: [{…}]
+// iat: 1730747213
+// phone: "asd"
+// role: "admin"
+// userId: "44a653aa-77bd-414a-9396-1a390ad0bb29"
+// userName: "asd"

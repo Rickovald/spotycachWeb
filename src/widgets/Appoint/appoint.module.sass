@@ -32,6 +32,7 @@
     border-radius: toRem(20)
     height: toRem(500)
     gap: toRem(20)
+    width: toRem(800)
 .title
     @include H3Bold
 .close
@@ -61,16 +62,27 @@
     transform: rotate(45deg)
 .close::after
     transform: rotate(-45deg)
-
+.forms_wrapper
+    display: flex
+    max-width: 100%
 .table
     display: flex
     // flex-wrap: wrap
     gap: toRem(20)
     overflow: hidden
-    width: 100%
+    min-width: 100%
+    max-width: 100%
     transition: $FastTransition
     &_hidden
         transform: translateX(-150%)
+.form
+    transition: $FastTransition
+    min-width: 100%
+    max-width: 100%
+    transform: translateX(-100%)
+    overflow: hidden
+    &_hidden
+        transform: translateX(150%)
 .navigation
     align-self: flex-start
     display: flex
@@ -125,6 +137,8 @@
     width: toRem(200)
 .backButton
     width: toRem(111)
+.goButton
+    width: toRem(140)
 .weekButton, .backButton
     transition: $FastTransition
     white-space: nowrap

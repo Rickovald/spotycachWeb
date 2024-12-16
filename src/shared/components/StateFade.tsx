@@ -16,6 +16,7 @@ export const Fader: FC<TFader> = ({ children, state }): ReactElement => {
             animate={!state ? 'open' : 'closed'}
             initial="init"
             variants={variants}
+            transition={{ duration: 0.5, type: 'spring' }}
         >
             {/* <Toggle onClick={() => setIsOpen(isOpen => !isOpen)} /> */}
             {children}

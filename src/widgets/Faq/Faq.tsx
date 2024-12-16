@@ -35,10 +35,10 @@ export const Faq: FC<IFaq> = (): ReactElement => {
     return (
         <div className={s.faq}>
             {faqs.map(faq => (
-                <div className={s.card} key={faq.id}>
+                <div className={s.card} key={faq.id}
+                    onClick={() => setOpenedId(openedId === faq.id ? null : faq.id)}>
                     <div
                         className={s.question}
-                        onClick={() => setOpenedId(openedId === faq.id ? null : faq.id)}
                     >
 
                         <div className={s.question}>

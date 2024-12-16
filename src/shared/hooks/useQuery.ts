@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { api } from 'entities/api';
+import { useEffect } from 'react';
 import { IQueryResult, User } from 'shared/interfaces';
 
 //! Выделить в env
@@ -31,14 +32,51 @@ export const useGetQuery = <T>(endpoint: string, key: string): IQueryResult<T | 
  * @returns {{ data: User[] | undefined, isLoading: boolean, isError: boolean }} An object containing the user data, loading state, and error state
  */
 export const useGetUser = (): IQueryResult<User[] | undefined> => {
-    return useGetQuery<User[]>('users', 'users');
+    // return useGetQuery<User[]>('users', 'users');
+    const token = localStorage.getItem('accessToken');
+    if (!token) {
+        return { data: undefined, isLoading: false, isError: false };
+    }
+    const { data, isLoading, isError, refetch } = useQuery<User[] | undefined>(
+        {
+            queryKey: ['users'],
+            staleTime: 60000,
+            queryFn: async () =>
+                await api.get<User[]>('users')
+                    .then((response) => response.data)
+        }
+    );
+    useEffect(() => {
+        if (token) {
+            refetch(); // Retry the query when the token changes
+        }
+    }, [token, refetch]);
+
+    return { data, isLoading, isError };
 };
 
 export const refreshAccessToken = async (): Promise<string> => {
-    const response = await api.post('/auth/refresh', {
-        refreshToken: localStorage.getItem('refreshToken')
-    });
+    try {
+        const response = await api.post('/auth/refresh', {
+            refreshToken: localStorage.getItem('refreshToken')
+        });
 
-    // localStorage.setItem('accessToken', response.data.accessToken);
-    return response.data.accessToken;
+        return response.data.accessToken;
+    } catch (error) {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        throw error;
+    }
+};
+// try {
+// } catch (error) {
+//     console.log('asd');
+
+//     localStorage.removeItem('accessToken');
+//     localStorage.removeItem('refreshToken');
+//     throw new Error('Failed to refresh access token');
+// }
+export const createAppoints = async (data: any): Promise<any> => {
+    const response = await api.post('/appoints', data);
+    return response.data;
 };

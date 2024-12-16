@@ -34,7 +34,6 @@ api.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config;
-
         // Если ошибка связана с истекшим токеном
         if (error.response?.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
@@ -56,11 +55,16 @@ export const setupTokenRefresh = (expiresIn: number) => {
 };
 
 const refreshAccessToken = async () => {
+    const refresh = localStorage.getItem('refreshToken');
+    if (!refresh) {
+        throw new Error('No refresh token found');
+    }
     const response = await axios.post('/auth/refresh', {
-        refreshToken: localStorage.getItem('refreshToken')
+        refreshToken: refresh
     });
+    if (!response.data.accessToken) {
+        throw new Error('Failed to refresh access token');
+    }
     localStorage.setItem('accessToken', response.data.accessToken);
-    console.log(response.data.accessToken);
-
     return response.data.accessToken;
 };
